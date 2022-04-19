@@ -1,13 +1,10 @@
 <?php
 
+use Framework\Application\Application;
 
 require 'vendor/autoload.php';
 
-use VolcanoBase\Dependencies\ExceptionHandler;
-use VolcanoBase\Dependencies\Greeter;
+$app = new Application();
 
-ExceptionHandler::register();
-
-(new Greeter('Calder'))->sayHello();
-
-//dd($_SERVER);
+$app->boot();
+$app->run();

@@ -1,6 +1,6 @@
 <?php
 
-namespace VolcanoBase\Dependencies;
+namespace Framework\Support;
 
 class Greeter
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace VolcanoBase\Dependencies;
+namespace Framework\Exceptions;
 
-class ExceptionHandler
+class Handler
 {
     public static function register()
     {

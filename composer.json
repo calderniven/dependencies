@@ -1,9 +1,9 @@
 {
-    "name": "volcanobase/dependencies",
+    "name": "volcanobase/framework",
     "autoload": {
-        "files": ["helpers.php"],
+        "files": ["src/helpers.php"],
         "psr-4": {
-            "VolcanoBase\\Dependencies\\": "src/"
+            "Framework\\": "src/"
         }
     },
     "authors": [
