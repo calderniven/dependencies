@@ -8,15 +8,22 @@ use Framework\Support\Greeter;
 
 class Application
 {
+    public ?Request $request = null;
+    
     public function boot()
     {
         Handler::register();
-        $request = new Request($_SERVER);
-        dd($request);
+        $this->request = new Request($_SERVER);
     }
-
+    
     public function run()
     {
-        (new Greeter('Calder'))->sayHello();
+        if ($this->request->uri == '/') {
+            (new Greeter('Calder'))->sayHello();
+        }
+
+        if ($this->request->uri == '/about') {
+            (new Greeter('You dirty dawg!'))->sayHello();
+        }
     }
 }
