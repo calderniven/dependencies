@@ -18,12 +18,16 @@ class Application
     
     public function run()
     {
-        if ($this->request->uri == '/') {
-            (new Greeter('Calder'))->sayHello();
-        }
+        $path = view_path('bingo.html');
+        $content = file_get_contents($path);
 
-        if ($this->request->uri == '/about') {
-            (new Greeter('You dirty dawg!'))->sayHello();
-        }
+        echo $content;
+        // if ($this->request->uri == '/') {
+        //     (new Greeter('Calder'))->sayHello();
+        // }
+        // 
+        // if ($this->request->uri == '/about') {
+        //     (new Greeter('You dirty dawg!'))->sayHello();
+        // }
     }
 }
