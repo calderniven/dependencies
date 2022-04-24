@@ -3,7 +3,10 @@
 function dd($variable)
 {
     echo '<pre style="background-color:black; color:white; padding:7px; font-size: 14px;">';
-    var_dump(htmlspecialchars($variable));
+    if (is_string($variable)) {
+        $variable = htmlspecialchars($variable);
+    }
+    var_dump($variable);
     echo '</pre>';
     die();
 }
