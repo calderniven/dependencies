@@ -3,10 +3,10 @@
 namespace Framework\Application;
 
 use Framework\Exceptions\Handler;
+use Framework\Http\Controllers\MainController;
 use Framework\Http\Request;
 use Framework\Routing\Route;
 use Framework\Routing\Router;
-use Framework\Support\Greeter;
 
 class Application
 {
@@ -23,25 +23,20 @@ class Application
     
     public function boot()
     {
-        $this->router->register(new Route('GET', '/', '', ''));
-        $this->router->register(new Route('GET', '/about', '', ''));
+        $this->router->register(new Route('GET', '/', MainController::class, 'showHomePage'));
+        
+        $this->router->register(new Route('GET', '/about', MainController::class, 'showAboutPage'));
     }
     
     public function run()
     {
-        
-        dd($this->router->matches($this->request));
+        $route = $this->router->matches($this->request);
 
-        $path = view_path('layout.html');
-        $content = file_get_contents($path);
+        if ($route == null) {
+            echo '404 page not found';
+            exit;
+        }
 
-        echo $content;
-        // if ($this->request->uri == '/') {
-        //     (new Greeter('Calder'))->sayHello();
-        // }
-        // 
-        // if ($this->request->uri == '/about') {
-        //     (new Greeter('You dirty dawg!'))->sayHello();
-        // }
+        echo $route->run();
     }
 }

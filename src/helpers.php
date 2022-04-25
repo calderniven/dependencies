@@ -17,6 +17,6 @@ function view_path(string $view)
     if (!file_exists($path)) {
         throw new Exception("View $view could not be found.");
     }
-
+    
     return $path;
 }
