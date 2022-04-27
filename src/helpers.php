@@ -1,5 +1,7 @@
 <?php
 
+use Framework\Renderer\Renderer;
+
 function dd($variable)
 {
     echo '<pre style="background-color:black; color:white; padding:7px; font-size: 14px;">';
@@ -19,4 +21,11 @@ function view_path(string $view)
     }
     
     return $path;
+}
+
+function view(string $view, array $slots = [])
+{
+    return (new Renderer("layout.html"))->render([
+        'body' => (new Renderer("$view.html"))->render($slots)
+    ]);
 }

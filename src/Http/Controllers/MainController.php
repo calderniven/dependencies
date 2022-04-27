@@ -8,11 +8,11 @@ class MainController
 {
     public function showHomePage()
     {
-        return (new Renderer('homepage.html'))->render();
+        return view('homepage');
     }
 
     public function showAboutpage()
     {
-        return (new Renderer('about.html'))->render();
+        return view('about');
     }
 }

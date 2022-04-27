@@ -7,10 +7,18 @@ class Renderer {
         public string $view
     ) {}
 
-    public function render()
+    public function render(array $slots): string
     {
-        $view = view_path($this->view);
+        $path = view_path($this->view);
 
-        return file_get_contents($view);
+        $template = file_get_contents($path);
+
+        $replacement = '';
+
+        if (array_key_exists('body', $slots)) {
+            $replacement = $slots['body'];
+        }
+
+        return str_replace("@slot('body')", $replacement, $template);
     }
 }
