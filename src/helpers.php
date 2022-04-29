@@ -25,7 +25,9 @@ function view_path(string $view)
 
 function view(string $view, array $slots = [])
 {
-    return (new Renderer("layout.html"))->render([
-        'body' => (new Renderer("$view.html"))->render($slots)
-    ]);
+    $body = (new Renderer("$view.html"))->render($slots);
+
+    return (new Renderer("layout.html"))
+        ->render(array_merge($slots, ['content' => $body]
+    ));
 }

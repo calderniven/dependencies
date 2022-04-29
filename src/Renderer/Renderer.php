@@ -13,12 +13,10 @@ class Renderer {
 
         $template = file_get_contents($path);
 
-        $replacement = '';
-
-        if (array_key_exists('body', $slots)) {
-            $replacement = $slots['body'];
+        foreach ($slots as $slot => $value) {
+            $template = str_replace("@slot('$slot')", $value, $template);
         }
 
-        return str_replace("@slot('body')", $replacement, $template);
+        return $template;
     }
 }
