@@ -5,11 +5,13 @@ namespace Framework\Application;
 use Framework\Exceptions\Handler;
 use Framework\Http\Controllers\MainController;
 use Framework\Http\Request;
+use Framework\Routing\Registrar;
 use Framework\Routing\Route;
 use Framework\Routing\Router;
 
 class Application
 {
+    public static Application $shared;
     public Request $request;
     public Router $router;
 
@@ -19,13 +21,12 @@ class Application
         
         $this->request = new Request($_SERVER);
         $this->router = new Router();
+        static::$shared = $this;
     }
     
     public function boot()
     {
-        $this->router->register(new Route('GET', '/', MainController::class, 'showHomePage'));
-        
-        $this->router->register(new Route('GET', '/about', MainController::class, 'showAboutPage'));
+        require base_path('routes.php');
     }
     
     public function run()

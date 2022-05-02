@@ -13,7 +13,7 @@ class MainController
         ]);
     }
 
-    public function showAboutpage()
+    public function showAboutPage()
     {
         return view('about');
     }

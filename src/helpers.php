@@ -1,6 +1,12 @@
 <?php
 
+use Framework\Application\Application;
 use Framework\Renderer\Renderer;
+
+function app(): Application
+{
+    return Application::$shared;
+}
 
 function dd($variable)
 {
@@ -11,6 +17,13 @@ function dd($variable)
     var_dump($variable);
     echo '</pre>';
     die();
+}
+
+function base_path(string $fileName)
+{
+    $path = __DIR__ . '/' . $fileName;
+    
+    return $path;
 }
 
 function view_path(string $view)
