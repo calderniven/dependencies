@@ -3,15 +3,13 @@
 namespace Framework\Application;
 
 use Framework\Exceptions\Handler;
-use Framework\Http\Controllers\MainController;
 use Framework\Http\Request;
-use Framework\Routing\Registrar;
-use Framework\Routing\Route;
 use Framework\Routing\Router;
 
 class Application
 {
     public static Application $shared;
+
     public Request $request;
     public Router $router;
 
@@ -35,7 +33,7 @@ class Application
 
         if ($route == null) {
             echo '404 page not found';
-            exit;
+            return;
         }
 
         echo $route->run();

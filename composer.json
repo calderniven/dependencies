@@ -6,6 +6,11 @@
             "Framework\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Calder Niven",
@@ -14,5 +19,8 @@
     ],
     "require": {
         "filp/whoops": "^2.14"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }
