@@ -29,13 +29,6 @@ class Application
     
     public function run()
     {
-        $route = $this->router->matches($this->request);
-
-        if ($route == null) {
-            echo '404 page not found';
-            return;
-        }
-
-        echo $route->run();
+        app()->router->executeRoute();
     }
 }
