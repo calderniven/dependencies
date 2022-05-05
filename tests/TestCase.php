@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Framework\Application\Application;
+use Framework\Http\Request;
 use PHPUnit\Framework\TestCase as FrameworkTestCase;
 
 class TestCase extends FrameworkTestCase
@@ -21,5 +22,20 @@ class TestCase extends FrameworkTestCase
         ];
 
         new Application;
+    }
+
+    public function get(string $uri): string
+    {
+        $_SERVER['REQUEST_URI'] = $uri;
+        $app = app();
+
+        ob_start();
+        $app->request = new Request($_SERVER);
+        $app->boot();
+        $app->run();
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
     }
 }

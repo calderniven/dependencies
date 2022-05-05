@@ -8,6 +8,7 @@ function app(): Application
     return Application::$shared;
 }
 
+// @codeCoverageIgnoreStart
 function dd($variable)
 {
     echo '<pre style="background-color:black; color:white; padding:7px; font-size: 14px;">';
@@ -18,6 +19,7 @@ function dd($variable)
     echo '</pre>';
     die();
 }
+// @codeCoverageIgnoreEnd
 
 function base_path(string $fileName)
 {

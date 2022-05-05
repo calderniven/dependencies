@@ -29,6 +29,6 @@ class Application
     
     public function run()
     {
-        app()->router->executeRoute();
+        $this->router->execute($this->request);
     }
 }

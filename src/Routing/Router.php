@@ -30,9 +30,9 @@ class Router implements Countable
         return null;
     }
 
-    public function executeRoute()
+    public function execute(Request $request)
     {
-        $route = app()->router->matches(app()->request);
+        $route = $this->matches($request);
 
         if ($route == null) {
             echo '404 page not found';
